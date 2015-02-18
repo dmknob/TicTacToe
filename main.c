@@ -136,39 +136,125 @@ int lerjogada(int *jogador) //Faz a leitura e validacao da jogada
         }
         break;
     default:
-        printf("Posicao invalida");
+        printf("Posicao invalida.\n");
+        lerjogada(jogador);
         break;
     }
 
 }
 
-void jogando(int *jogador)
+int jogando(int *jogador)
 {
+    printf("Processando..\n");
 
+    if(matriz[0]==matriz[1] && matriz[0]==matriz[2] && matriz[0] !=0) //Linha 1
+    {
+        return jogador;
+    }
+    if(matriz[3]==matriz[4] && matriz[3]==matriz[5] && matriz[3] !=0) //Linha 2
+    {
+        return jogador;
+    }
+    if(matriz[6]==matriz[7] && matriz[6]==matriz[8] && matriz[6] !=0) //Linha 3
+    {
+        return jogador;
+    }
+    if(matriz[0]==matriz[3] && matriz[0]==matriz[6] && matriz[0] !=0) //Coluna 1
+    {
+        return jogador;
+    }
+    if(matriz[1]==matriz[4] && matriz[1]==matriz[7] && matriz[1] !=0) //Coluna 2
+    {
+        return jogador;
+    }
+    if(matriz[2]==matriz[5] && matriz[8]==matriz[2] && matriz[2] !=0) //Coluna 3
+    {
+        return jogador;
+    }
+    if(matriz[0]==matriz[4] && matriz[4]==matriz[8] && matriz[4] !=0) //Diagonal 1
+    {
+        return jogador;
+    }
+    if(matriz[2]==matriz[4] && matriz[4]==matriz[6] && matriz[4] !=0) //Diagonal 2
+    {
+        return jogador;
+    }
+
+    return 0;
 }
 
 
 int main()
 {
     desenha(matriz);
-    lerjogada(jogador);
-    desenha(matriz);
-    jogador=2;
-    lerjogada(jogador);
-    desenha(matriz);
-    jogador=1;
-    lerjogada(jogador);
-    desenha(matriz);
-    jogador=2;
-    lerjogada(jogador);
-    desenha(matriz);
-    jogador=1;
-    lerjogada(jogador);
-    desenha(matriz);
-    jogador=2;
-    lerjogada(jogador);
-    desenha(matriz);
 
+    jogador=1;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=2;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=1;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=2;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=1;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=2;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=1;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=2;
+    lerjogada(jogador);
+    desenha(matriz);
+    if (jogando(jogador) !=0)
+    {
+        printf("Ganhou Jogador %d.\n", jogador);
+        return 0;
+    }
+    jogador=1;
+    lerjogada(jogador);
+    desenha(matriz);
 
 
 //system("pause");
