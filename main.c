@@ -58,94 +58,31 @@ void desenha(int *matriz)
 
 int lerjogada(int *jogador) //Faz a leitura e validacao da jogada
 {
-    printf("Player %d\n", jogador);
+    printf("Player %d.\n", jogador);
     printf("Digite o numero [1-9] onde deseja jogar: ");
     scanf("%d", &jogada);
-    switch (jogada)
+    if(jogada>=1 || jogada <=9) //Verifica se é uma posição válida
     {
-    case 1:
-        if(matriz[0]==0) matriz[0]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 2:
-        if(matriz[1]==0) matriz[1]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 3:
-        if(matriz[2]==0) matriz[2]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 4:
-        if(matriz[3]==0) matriz[3]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 5:
-        if(matriz[4]==0) matriz[4]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 6:
-        if(matriz[5]==0) matriz[5]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 7:
-        if(matriz[6]==0) matriz[6]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 8:
-        if(matriz[7]==0) matriz[7]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    case 9:
-        if(matriz[8]==0) matriz[8]=jogador;
-        else
-        {
-            printf("Posicao ja ocupada.\n");
-            lerjogada(jogador);
-        }
-        break;
-    default:
-        printf("Posicao invalida.\n");
-        lerjogada(jogador);
-        break;
+      if(matriz[jogada-1]==0) //Verifica se a posição está vazia
+      {
+        matriz[jogada-1]=jogador; //Preenche a posição com o simbolo do jogador
+        return jogador; //Retorna
+      }
+      else
+      {
+        printf("Posicao ja ocupada.\n");
+      }
     }
-
+    else
+    {
+      printf("Posicao invalida.\n");
+    }
+    lerjogada(jogador); //Jogada inválida, manda jogar novamente
 }
 
 int jogando(int *jogador)
 {
-    printf("Processando..\n");
+    //printf("Processando..\n");
 
     if(matriz[0]==matriz[1] && matriz[0]==matriz[2] && matriz[0] !=0) //Linha 1
     {
@@ -261,107 +198,3 @@ int main()
     return 0;
 
 }
-
-//Cemiterio de codigo:
-
-/*    switch (jogada)
-    {
-    case 1:
-        linha1="| X |   |   |\n";
-        break;
-    case 2:
-        linha1="|   | X |   |\n";
-        break;
-    case 3:
-        linha1="|   |   | X |\n";
-        break;
-    case 4:
-        linha2="| X |   |   |\n";
-        break;
-    case 5:
-        linha2="|   | X |   |\n";
-        break;
-    case 6:
-        linha2="|   |   | X |\n";
-        break;
-    case 7:
-        linha3="| X |   |   |\n";
-        break;
-    case 8:
-        linha3="|   | X |   |\n";
-        break;
-    case 9:
-        linha3="|   |   | X |\n";
-        break;
-    default:
-        break;
-*/
-
-
-/*
-        i=(jogada / 3); //Calcula coluna
-        j=(jogada % 3); //Calcula linha
-
-        if(matriz[i][j] != 1 && matriz[i][j] != 2) //Se posicao esta vazia
-        {
-            matriz[1][2]=1;
-            printf("%d",matriz[0][0]);
-            printf("%d",matriz[1][0]);
-            printf("%d",matriz[2][0]);
-            printf("\n");
-            printf("%d",matriz[0][1]);
-            printf("%d",matriz[1][1]);
-            printf("%d",matriz[2][1]);
-            printf("\n");
-            printf("%d",matriz[0][2]);
-            printf("%d",matriz[1][2]);
-            printf("%d",matriz[2][2]);
-            printf("\n");
-        }
-        else
-        {
-            printf("Posicao  ja ocupada");
-        }
-*/
-/*        printf("%d",matriz[0][0]);
-        printf("%c", linha1[2]);
-        char letra[2];
-        itoa(matriz[0][0], letra, 10);
-        printf("%s", letra);
-        strcpy(linha1[2],letra[1]);
-        //linha1[2]=letra;
-        strcpy(linha1[6],matriz[1][0]);
-        //linha1[6]=matriz[1][0];
-        strcpy(linha1[10],matriz[2][0]);
-        //linha1[10]=matriz[2][0];
-
-        linha2[2]=matriz[0][1];
-        linha2[6]=matriz[1][1];
-        linha2[10]=matriz[2][1];
-
-        linha3[2]=matriz[0][2];
-        linha3[6]=matriz[1][2];
-        linha3[10]=matriz[2][2];
-
-/*        linha1=strcat("| " , matriz[0][0];
-        linha1=strcat(linha1, " | ");
-        linha1=strcat(linha1, matriz[1][0]);
-        linha1=strcat(linha1, " | ");
-        linha1=strcat(linha1, matriz[2][0]);
-        linha1=strcat(linha1, " |");
-
-        linha2=strcat("| " , matriz[0][1]);
-        linha2=strcat(linha1, " | ");
-        linha2=strcat(linha1, matriz[1][1]);
-        linha2=strcat(linha1, " | ");
-        linha2=strcat(linha1, matriz[2][1]);
-        linha2=strcat(linha1, " |");
-
-        linha3=strcat("| " , matriz[0][2]);
-        linha3=strcat(linha1, " | ");
-        linha3=strcat(linha1, matriz[1][2]);
-        linha3=strcat(linha1, " | ");
-        linha3=strcat(linha1, matriz[2][2]);
-        linha3=strcat(linha1, " |");
-*/
-//        desenha(linha1, linha2, linha3);
