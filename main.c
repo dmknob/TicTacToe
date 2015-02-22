@@ -61,7 +61,7 @@ int lerjogada(int *jogador) //Faz a leitura e validacao da jogada
     printf("Player %d.\n", jogador);
     printf("Digite o numero [1-9] onde deseja jogar: ");
     scanf("%d", &jogada);
-    if(jogada>=1 || jogada <=9) //Verifica se � uma posi��o v�lida
+    if(jogada>=1 && jogada <=9) //Verifica se � uma posi��o v�lida
     {
       if(matriz[jogada-1]==0) //Verifica se a posi��o est� vazia
       {
