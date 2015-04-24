@@ -13,10 +13,11 @@ int matriz[9]= {0,0,0,0,0,0,0,0,0};
 
 void desenha(int *matriz)
 {
-    system("cls");
+    system("clear || cls");
     printf("Jogo da Velha\n");
     printf(borda);
     printf("| ");
+
     if(matriz[0]==0) printf(" ");
     else printf("%d", matriz[0]);
     printf(" | ");
@@ -56,16 +57,18 @@ void desenha(int *matriz)
     printf(borda);
 }
 
-int lerjogada(int *jogador) //Faz a leitura e validacao da jogada
+int lerjogada(int jogador) //Faz a leitura e validacao da jogada
 {
     printf("Player %d.\n", jogador);
     printf("Digite o numero [1-9] onde deseja jogar: ");
     scanf("%d", &jogada);
-    if(jogada>=1 && jogada <=9) //Verifica se � uma posi��o v�lida
+    printf("Jogada: %d\n",jogada);
+    getchar();
+    if(jogada>=1 && jogada <=9) //Verifica se eh uma posicao valida
     {
-      if(matriz[jogada-1]==0) //Verifica se a posi��o est� vazia
+      if(matriz[jogada-1]==0) //Verifica se a posicao esta vazia1
       {
-        matriz[jogada-1]=jogador; //Preenche a posi��o com o simbolo do jogador
+        matriz[jogada-1]=jogador; //Preenche a posicao com o simbolo do jogador
         return jogador; //Retorna
       }
       else
@@ -76,14 +79,12 @@ int lerjogada(int *jogador) //Faz a leitura e validacao da jogada
     else
     {
       printf("Posicao invalida.\n");
-    }
-    lerjogada(jogador); //Jogada inv�lida, manda jogar novamente
+    }   
+    lerjogada(jogador); //Jogada invalida, manda jogar novamente
 }
 
-int jogando(int *jogador)
+int jogando(int jogador)
 {
-    //printf("Processando..\n");
-
     if(matriz[0]==matriz[1] && matriz[0]==matriz[2] && matriz[0] !=0) //Linha 1
     {
         return jogador;
@@ -130,7 +131,6 @@ int main()
     for(i=0; i<=8; i++)
     {
       jogador = (i % 2)+1; //Cria o padrao 1-2-1-2-1-2-1-2-1 para alternar os jogadores
-      printf("%d.\n", jogador);
       lerjogada(jogador);
       desenha(matriz);
       if (jogando(jogador) !=0)
@@ -139,7 +139,8 @@ int main()
         return 0; //Encerra o programa
       }
     }
-//system("pause");
+    printf("O jogo terminou EMPATADO!\n");
+  //system("pause");
     return 0;
 
 }
